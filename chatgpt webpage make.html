@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aridity Team Official Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            position: relative; /* Ensure body is relative for positioning */
+        }
+
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Push behind other content */
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            -webkit-filter: blur(8px); /* For older versions of Safari */
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .games {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .game {
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.5); /* Example background for game boxes */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .game h3 {
+            font-size: 1.5em;
+        }
+
+        .game img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.5); /* Example background for footer */
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div>
+    <div class="container">
+        <header>
+            <h1>Aridity Team</h1>
+            <p>3 or 2 People develop this fan made mod :).</p>
+        </header>
+        <main>
+            <section>
+                <h2>Our Games</h2>
+                <div class="games">
+                    <div class="game">
+                        <h3>Beta Fortress Version 6</h3>
+						<body>
+						  <h3>
+							Download Beta Fortress
+						  </h3>
+						  <p>Click the below link to Download:
+							<a href="https://github.com/AridityTeam/BetaFortressClient-Releases/releases/download/v6/beta-fortresss-client.v0.6.any.cpu.release.rar" target="_blank">click here</a>
+						  </p>
+                        <p>(This mod is not Beta Accurate!)</p>
+                    </div>
+                    <!-- Add more games as needed -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Aridity Team. All rights reserved. (made by gabgamming920)</p>
+    </footer>
+</body>
+</html>
