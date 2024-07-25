@@ -10,7 +10,7 @@
             color: #fff;
             margin: 0;
             padding: 0;
-            position: relative; /* Ensure body is relative for positioning */
+            position: relative;
         }
 
         .background-blur {
@@ -19,8 +19,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Push behind other content */
-            background-image: url('background-image.JPG');
+            z-index: -1;
+            background-image: url('background-image.jpg');
             background-size: cover;
             background-position: center;
             filter: blur(8px);
@@ -54,7 +54,7 @@
 
         .game {
             width: 300px;
-            background-color: rgba(0, 0, 0, 0.5); /* Example background for game boxes */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -71,7 +71,7 @@
         }
 
         .footer {
-            background-color: rgba(0, 0, 0, 0.5); /* Example background for footer */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px 0;
             position: fixed;
             bottom: 0;
@@ -79,38 +79,167 @@
             text-align: center;
             font-size: 0.8em;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #333;
+            margin: 10% auto; /* 10% from top, centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Transparent button style */
+        #openModalBtn {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: underline; /* Optional: Add underline effect */
+        }
+
+        #openModalBtn:hover {
+            text-decoration: none; /* Remove underline on hover */
+        }
+
+        /* Play button style */
+        #playButton {
+            display: inline-block;
+            background-color: transparent;
+            border: none;
+            color: #121;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: underline; /* Optional: Add underline effect */
+            margin-top: 20px;
+        }
+
+        #playButton:hover {
+            text-decoration: none; /* Remove underline on hover */
+        }
     </style>
 </head>
 <body>
+    <audio id="backgroundMusic">
+        <source src="thx for downloading.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <div class="background-blur"></div>
     <div class="container">
         <header>
             <h1>Aridity Team</h1>
-            <p>3 or 2 People develop this fan made mod :).</p>
+            <p>3 or 2 People develop this fan-made mod :).</p>
         </header>
         <main>
+            <section>
+                <h2>About Us</h2>
+                <button id="openModalBtn">Learn More About Aridity Team</button>
+                <div id="aboutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2>About Aridity Team</h2>
+                        <p>The Aridity Team is a group of developers who mainly work with .NET (VB and C#) or C++. We also develop games based on the Source engine.</p>
+                        <p>If you're interested in joining us, you don't need to be a software developer/engineer. We welcome contributions in sound design, graphics, voice acting, and more!</p>
+                        <p>Team members:</p>
+                        <ul>
+                            <li>PracticeMedicine - former team lead, project lead, programmer, level designer, archiso config on batarongOS.</li>
+                            <li>TwilightBob/Unnamed - team lead, project lead, level designer, model design.</li>
+                            <li>bvvth556 - team lead, level designer, script manipulator.</li>
+                            <li>certified PC eater/rilabug - project lead for batarongOS, archiso config and plymouth theme on batarongOS.</li>
+                            <li>Timmy - archiso config on batarongOS.</li>
+                            <li>TheAR3Guy - music director.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <section>
                 <h2>Our Games</h2>
                 <div class="games">
                     <div class="game">
                         <h3>Beta Fortress Version 6</h3>
-						<body>
-						  <h3>
-							Download Beta Fortress
-						  </h3>
-						  <p>Click the below link to Download:
-							<a href="https://github.com/AridityTeam/BetaFortressClient-Releases/releases/download/v6/beta-fortresss-client.v0.6.any.cpu.release.rar" target="_blank">click here</a>
-						  </p>
+                        <p>Click the below link to download:</p>
+                        <p><a href="https://github.com/AridityTeam/BetaFortressClient-Releases/releases/download/v6/beta-fortresss-client.v0.6.any.cpu.release.rar" target="_blank" onclick="playAudio()">Download Beta Fortress</a></p>
                         <p>(trying to make 100% accurate beta recreation!)</p>
+                    </div>
+                    <div class="game">
+                        <h3>HL2DMCE</h3>
+                        <p>COMMING SOON:</p>
                     </div>
                     <!-- Add more games as needed -->
                 </div>
             </section>
+            
         </main>
     </div>
     <footer class="footer">
         <p>&copy; 2024 Aridity Team. All rights reserved. (made by gabgamming920)</p>
     </footer>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('aboutModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("openModalBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Play audio function
+        function playAudio() {
+            var audio = document.getElementById('backgroundMusic');
+            audio.play();
+            document.getElementById('playButton').style.display = 'none'; // Hide play button after playing
+        }
+    </script>
 </body>
 </html>
