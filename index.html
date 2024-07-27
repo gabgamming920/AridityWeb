@@ -99,12 +99,13 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
         }
 
         .modal-content {
             background-color: #333;
-            margin: 5% auto; /* 5% from top, centered */
+            margin: 10% auto; /* 10% from top, centered */
             padding: 20px;
             border: 1px solid #888;
             width: 80%; /* Could be more or less, depending on screen size */
@@ -116,13 +117,13 @@
             float: right;
             font-size: 28px;
             font-weight: bold;
-            cursor: pointer;
         }
 
         .close:hover,
         .close:focus {
             color: #fff;
             text-decoration: none;
+            cursor: pointer;
         }
 
         /* Transparent button style */
@@ -154,6 +155,16 @@
         #playButton:hover {
             text-decoration: none; /* Remove underline on hover */
         }
+
+        /* Style for the YouTube link */
+        .youtube-link {
+            color: red; /* Change the color to red */
+            text-decoration: none; /* Optional: Remove underline */
+        }
+
+        .youtube-link:hover {
+            text-decoration: underline; /* Optional: Add underline on hover */
+        }
     </style>
 </head>
 <body>
@@ -174,7 +185,7 @@
                 <button id="openModalBtn">Learn More About Aridity Team</button>
                 <div id="aboutModal" class="modal">
                     <div class="modal-content">
-                        <span class="close" data-modal-id="aboutModal">&times;</span>
+                        <span class="close" onclick="closeModal('aboutModal')">&times;</span>
                         <h2>About Aridity Team</h2>
                         <p>The Aridity Team is a group of developers who mainly work with .NET (VB and C#) or C++. We also develop games based on the Source engine.</p>
                         <p>If you're interested in joining us, you don't need to be a software developer/engineer. We welcome contributions in sound design, graphics, voice acting, and more!</p>
@@ -182,7 +193,9 @@
                         <ul>
                             <li>PracticeMedicine - former team lead, project lead, programmer, level designer, archiso config on batarongOS.</li>
                             <li>TwilightBob/Unnamed - team lead, project lead, level designer, model design. (Social Links)  
-                                <p><a href="https://youtube.com/@bvvth556gaming?si=fivKw9ZY-9vmH-h5" ><img src="ytico.png" alt="Youtube"></a></p>
+                                <p><a href="https://youtube.com/@bvvth556gaming?si=fivKw9ZY-9vmH-h5" class="youtube-link">
+                                    <img src="ytico.png" alt="Youtube"> YouTube
+                                </a></p>
                             </li>
                             <li>bvvth556 - team lead, level designer, script manipulator.</li>
                             <li>certified PC eater/rilabug - project lead for batarongOS, archiso config and plymouth theme on batarongOS.</li>
@@ -193,19 +206,22 @@
                 </div>
             </section>
 
+            <!-- Duplicate About Us Section -->
             <section>
                 <h2>Support Us</h2>
                 <button id="openModalBtn2">Donate</button>
                 <div id="aboutModal2" class="modal">
                     <div class="modal-content">
-                        <span class="close" data-modal-id="aboutModal2">&times;</span>
-                        <h2>Please Support Us</h2>
-                        <p>If you are interested in donating, you can kindly donate to me (the maker of the website).</p>
+                        <span class="close" onclick="closeModal('aboutModal2')">&times;</span>
+                        <h2>Please Support us</h2>
+                        <p>If you are interested in donating the maker of the website you can kindly donate to me (the maker of the website).</p>
                         <p>QR Codes to Donate</p>
+
                         <ul>
-                            <li> <img src="meqrcode5usd.png" alt="$5"> </li>
-                            <li> <img src="meqrcode15usd.png" alt="$10"> </li>
-                            <li> <img src="meqrcode20usd.png" alt="$20"> </li>
+                            <p>Maker of the Website</p>
+                            <li><img src="meqrcode5usd.png" alt="$5"></li>
+                            <li><img src="meqrcode15usd.png" alt="$10"></li>
+                            <li><img src="meqrcode20usd.png" alt="$20"></li>
                         </ul>
                     </div>
                 </div>
@@ -222,7 +238,7 @@
                         </div>
                         <p>Click the below link to download:</p>
                         <p><a href="https://github.com/AridityTeam/BetaFortressClient-Releases/releases/download/v6/beta-fortresss-client.v0.6.any.cpu.release.rar" target="_blank" onclick="playAudio()">Download Beta Fortress</a></p>
-                        <p>(Trying to make 100% accurate beta recreation!)</p>
+                        <p>(trying to make 100% accurate beta recreation!)</p>
                     </div>
                     <div class="game">
                         <h3>Half-Life 2 Deathmatch Community Edition</h3>
@@ -235,6 +251,7 @@
                     <!-- Add more games as needed -->
                 </div>
             </section>
+            
         </main>
     </div>
     <footer class="footer">
@@ -242,14 +259,6 @@
     </footer>
 
     <script>
-        // Function to close a modal
-        function closeModal(modalId) {
-            var modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = "none";
-            }
-        }
-
         // Get the modals
         var modal = document.getElementById('aboutModal');
         var modal2 = document.getElementById('aboutModal2');
@@ -259,7 +268,8 @@
         var btn2 = document.getElementById("openModalBtn2");
 
         // Get the <span> elements that close the modals
-        var spans = document.querySelectorAll(".close");
+        var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
 
         // When the user clicks on the button, open the modal
         btn.onclick = function() {
@@ -271,16 +281,17 @@
         }
 
         // When the user clicks on <span> (x), close the modal
-        spans.forEach(span => {
-            span.onclick = function() {
-                closeModal(this.getAttribute('data-modal-id'));
-            }
-        });
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                closeModal(event.target.id);
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
             }
         }
 
