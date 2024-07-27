@@ -127,7 +127,7 @@
         }
 
         /* Transparent button style */
-        #openModalBtn {
+        #openModalBtn, #openModalBtn2 {
             background-color: transparent;
             border: none;
             color: #fff;
@@ -136,7 +136,7 @@
             text-decoration: underline; /* Optional: Add underline effect */
         }
 
-        #openModalBtn:hover {
+        #openModalBtn:hover, #openModalBtn2:hover {
             text-decoration: none; /* Remove underline on hover */
         }
 
@@ -192,6 +192,29 @@
                 </div>
             </section>
 
+            <!-- Duplicate About Us Section -->
+            <section>
+                <h2>About Us Duplicate</h2>
+                <button id="openModalBtn2">Learn More About Aridity Team</button>
+                <div id="aboutModal2" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal2()">&times;</span>
+                        <h2>About Aridity Team</h2>
+                        <p>The Aridity Team is a group of developers who mainly work with .NET (VB and C#) or C++. We also develop games based on the Source engine.</p>
+                        <p>If you're interested in joining us, you don't need to be a software developer/engineer. We welcome contributions in sound design, graphics, voice acting, and more!</p>
+                        <p>Team members:</p>
+                        <ul>
+                            <li>PracticeMedicine - former team lead, project lead, programmer, level designer, archiso config on batarongOS.</li>
+                            <li>TwilightBob/Unnamed - team lead, project lead, level designer, model design.</li>
+                            <li>bvvth556 - team lead, level designer, script manipulator.</li>
+                            <li>certified PC eater/rilabug - project lead for batarongOS, archiso config and plymouth theme on batarongOS.</li>
+                            <li>Timmy - archiso config on batarongOS.</li>
+                            <li>TheAR3Guy - music director.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <section>
                 <h2>Our Games</h2>
                 <div class="games">
@@ -211,7 +234,7 @@
                             <img src="hl2dm-preview1.jpg" alt="Half-Life 2 Deathmatch Preview 1">
                             <img src="hl2dm-preview2.jpg" alt="Half-Life 2 Deathmatch Preview 2">
                         </div>
-                        <p>COMMING SOON:</p>
+                        <p>COMING SOON:</p>
                     </div>
                     <!-- Add more games as needed -->
                 </div>
@@ -223,20 +246,26 @@
         <p>&copy; 2024 Aridity Team. All rights reserved. (made by gabgamming920)</p>
     </footer>
 
-
     <script>
-        // Get the modal
+        // Get the modals
         var modal = document.getElementById('aboutModal');
+        var modal2 = document.getElementById('aboutModal2');
 
-        // Get the button that opens the modal
+        // Get the buttons that open the modals
         var btn = document.getElementById("openModalBtn");
+        var btn2 = document.getElementById("openModalBtn2");
 
-        // Get the <span> element that closes the modal
+        // Get the <span> elements that close the modals
         var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
 
         // When the user clicks on the button, open the modal
         btn.onclick = function() {
             modal.style.display = "block";
+        }
+
+        btn2.onclick = function() {
+            modal2.style.display = "block";
         }
 
         // When the user clicks on <span> (x), close the modal
@@ -244,10 +273,17 @@
             modal.style.display = "none";
         }
 
+        function closeModal2() {
+            modal2.style.display = "none";
+        }
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
             }
         }
 
