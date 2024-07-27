@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aridity Team Official Web</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +12,7 @@
             margin: 0;
             padding: 0;
             position: relative;
+            background-color: #333; /* Fallback background color */
         }
 
         .background-blur {
@@ -20,7 +22,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('background-image.jpg');
+            background-image: url('background-image.JPG');
             background-size: cover;
             background-position: center;
             filter: blur(8px);
@@ -64,10 +66,17 @@
             font-size: 1.5em;
         }
 
-        .game img {
-            width: 100%;
-            border-radius: 8px;
+        .game-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             margin-top: 10px;
+        }
+
+        .game-images img {
+            width: calc(50% - 5px); /* Adjust the width as per your design */
+            border-radius: 8px;
         }
 
         .footer {
@@ -90,6 +99,7 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
         }
 
@@ -117,7 +127,7 @@
         }
 
         /* Transparent button style */
-        #openModalBtn, #openDonateModalBtn {
+        #openModalBtn {
             background-color: transparent;
             border: none;
             color: #fff;
@@ -126,7 +136,7 @@
             text-decoration: underline; /* Optional: Add underline effect */
         }
 
-        #openModalBtn:hover, #openDonateModalBtn:hover {
+        #openModalBtn:hover {
             text-decoration: none; /* Remove underline on hover */
         }
 
@@ -145,40 +155,6 @@
         #playButton:hover {
             text-decoration: none; /* Remove underline on hover */
         }
-
-        /* Donate Modal styles */
-        #donateModal .modal-content {
-            background-color: #444;
-            text-align: center;
-        }
-
-        #donateModal h2 {
-            margin-top: 0;
-        }
-
-        #donateModal p {
-            margin: 20px 0;
-        }
-
-        /* Additional styles for the buttons */
-        section {
-            margin-bottom: 40px;
-        }
-
-        #openDonateModalBtn {
-            margin-bottom: 10px; /* Space between the buttons */
-        }
-
-        /* Responsive styles */
-        @media (max-width: 600px) {
-            .game {
-                width: 100%;
-            }
-
-            .container {
-                width: 95%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -196,7 +172,6 @@
         <main>
             <section>
                 <h2>About Us</h2>
-                <button id="openDonateModalBtn">Support Us</button>
                 <button id="openModalBtn">Learn More About Aridity Team</button>
                 <div id="aboutModal" class="modal">
                     <div class="modal-content">
@@ -222,45 +197,66 @@
                 <div class="games">
                     <div class="game">
                         <h3>Beta Fortress Version 6</h3>
+                        <div class="game-images">
+                            <img src="beta-fortress-preview1.jpg" alt="Beta Fortress Preview 1">
+                            <img src="beta-fortress-preview2.jpg" alt="Beta Fortress Preview 2">
+                        </div>
                         <p>Click the below link to download:</p>
                         <p><a href="https://github.com/AridityTeam/BetaFortressClient-Releases/releases/download/v6/beta-fortresss-client.v0.6.any.cpu.release.rar" target="_blank" onclick="playAudio()">Download Beta Fortress</a></p>
                         <p>(trying to make 100% accurate beta recreation!)</p>
                     </div>
                     <div class="game">
-                        <h3>HL2DMCE</h3>
-                        <p>COMING SOON:</p>
+                        <h3>Half-Life 2 Deathmatch Community Edition</h3>
+                        <div class="game-images">
+                            <img src="hl2dm-preview1.jpg" alt="Half-Life 2 Deathmatch Preview 1">
+                            <img src="hl2dm-preview2.jpg" alt="Half-Life 2 Deathmatch Preview 2">
+                        </div>
+                        <p>COMMING SOON:</p>
                     </div>
                     <!-- Add more games as needed -->
                 </div>
             </section>
-
-            <!-- Donate Modal -->
-            <div id="donateModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeDonateModal()">&times;</span>
-                    <h2>Support GabGamming920</h2>
-                    <p>Donate to GabGamming920 so that he can buy a decent laptop for coding ^_^</p>
-                    <p><a href="https://donate-link-here.com" target="_blank" id="donateLink">Donate Here</a></p>
-                </div>
-            </div>
+            
         </main>
     </div>
     <footer class="footer">
         <p>&copy; 2024 Aridity Team. All rights reserved. (made by gabgamming920)</p>
     </footer>
 
+
     <script>
-        // Get the modals
-        var aboutModal = document.getElementById('aboutModal');
-        var donateModal = document.getElementById('donateModal');
+        // Get the modal
+        var modal = document.getElementById('aboutModal');
 
-        // Get the buttons that open the modals
-        var aboutBtn = document.getElementById('openModalBtn');
-        var donateBtn = document.getElementById('openDonateModalBtn');
+        // Get the button that opens the modal
+        var btn = document.getElementById("openModalBtn");
 
-        // When the user clicks the button, open the modal 
-        aboutBtn.onclick = function() {
-            aboutModal.style.display = "block";
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
         }
 
-        donateBtn.onclick
+        // When the user clicks on <span> (x), close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Play audio function
+        function playAudio() {
+            var audio = document.getElementById('backgroundMusic');
+            audio.play();
+            document.getElementById('playButton').style.display = 'none'; // Hide play button after playing
+        }
+    </script>
+</body>
+</html>
