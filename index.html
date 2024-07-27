@@ -117,7 +117,7 @@
         }
 
         /* Transparent button style */
-        #openModalBtn {
+        #openModalBtn, #openDonateModalBtn {
             background-color: transparent;
             border: none;
             color: #fff;
@@ -126,7 +126,7 @@
             text-decoration: underline; /* Optional: Add underline effect */
         }
 
-        #openModalBtn:hover {
+        #openModalBtn:hover, #openDonateModalBtn:hover {
             text-decoration: none; /* Remove underline on hover */
         }
 
@@ -144,6 +144,20 @@
 
         #playButton:hover {
             text-decoration: none; /* Remove underline on hover */
+        }
+
+        /* Donate Modal styles */
+        #donateModal .modal-content {
+            background-color: #444;
+            text-align: center;
+        }
+
+        #donateModal h2 {
+            margin-top: 0;
+        }
+
+        #donateModal p {
+            margin: 20px 0;
         }
 
         /* Responsive styles */
@@ -209,6 +223,19 @@
                     <!-- Add more games as needed -->
                 </div>
             </section>
+
+            <section>
+                <button id="openDonateModalBtn">Support Us</button>
+                <!-- Donate Modal -->
+                <div id="donateModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeDonateModal()">&times;</span>
+                        <h2>Support GabGamming920</h2>
+                        <p>Donate to GabGamming920 so that he can buy a decent laptop for coding ^_^</p>
+                        <p><a href="https://donate-link-here.com" target="_blank" id="donateLink">Donate Here</a></p>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
     <footer class="footer">
@@ -216,37 +243,22 @@
     </footer>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById('aboutModal');
+        // Get the modals
+        var aboutModal = document.getElementById('aboutModal');
+        var donateModal = document.getElementById('donateModal');
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("openModalBtn");
+        // Get the buttons that open the modals
+        var aboutBtn = document.getElementById("openModalBtn");
+        var donateBtn = document.getElementById("openDonateModalBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        // Get the <span> elements that close the modals
+        var aboutSpan = document.getElementsByClassName("close")[0];
+        var donateSpan = document.getElementsByClassName("close")[1];
 
-        // When the user clicks on the button, open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
+        // When the user clicks on the button, open the about modal
+        aboutBtn.onclick = function() {
+            aboutModal.style.display = "block";
         }
 
-        // When the user clicks on <span> (x), close the modal
-        function closeModal() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Play audio function
-        function playAudio() {
-            var audio = document.getElementById('backgroundMusic');
-            audio.play();
-        }
-    </script>
-</body>
-</html>
+        // When the user clicks on the button, open the donate modal
+        donateBtn.onclick = function() {
