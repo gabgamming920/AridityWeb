@@ -160,6 +160,15 @@
             margin: 20px 0;
         }
 
+        /* Additional styles for the buttons */
+        section {
+            margin-bottom: 40px;
+        }
+
+        #openDonateModalBtn {
+            margin-bottom: 10px; /* Space between the buttons */
+        }
+
         /* Responsive styles */
         @media (max-width: 600px) {
             .game {
@@ -187,6 +196,7 @@
         <main>
             <section>
                 <h2>About Us</h2>
+                <button id="openDonateModalBtn">Support Us</button>
                 <button id="openModalBtn">Learn More About Aridity Team</button>
                 <div id="aboutModal" class="modal">
                     <div class="modal-content">
@@ -224,18 +234,15 @@
                 </div>
             </section>
 
-            <section>
-                <button id="openDonateModalBtn">Support Us</button>
-                <!-- Donate Modal -->
-                <div id="donateModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close" onclick="closeDonateModal()">&times;</span>
-                        <h2>Support GabGamming920</h2>
-                        <p>Donate to GabGamming920 so that he can buy a decent laptop for coding ^_^</p>
-                        <p><a href="https://donate-link-here.com" target="_blank" id="donateLink">Donate Here</a></p>
-                    </div>
+            <!-- Donate Modal -->
+            <div id="donateModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeDonateModal()">&times;</span>
+                    <h2>Support GabGamming920</h2>
+                    <p>Donate to GabGamming920 so that he can buy a decent laptop for coding ^_^</p>
+                    <p><a href="https://donate-link-here.com" target="_blank" id="donateLink">Donate Here</a></p>
                 </div>
-            </section>
+            </div>
         </main>
     </div>
     <footer class="footer">
@@ -255,10 +262,4 @@
         var aboutSpan = document.getElementsByClassName("close")[0];
         var donateSpan = document.getElementsByClassName("close")[1];
 
-        // When the user clicks on the button, open the about modal
-        aboutBtn.onclick = function() {
-            aboutModal.style.display = "block";
-        }
-
-        // When the user clicks on the button, open the donate modal
-        donateBtn.onclick = function() {
+        //
