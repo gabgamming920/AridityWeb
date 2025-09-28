@@ -120,3 +120,178 @@
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s;
+        }
+        
+        .download-link:hover {
+            background-color: #777;
+        }
+
+        /* --- Modal and Other Styles (Unchanged) --- */
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+        .modal-content { background-color: #333; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 700px; border-radius: 8px; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close:hover, .close:focus { color: #fff; text-decoration: none; }
+        #openModalBtn, #openModalBtn2 { background-color: transparent; border: 1px solid #fff; color: #fff; font-size: 1em; cursor: pointer; padding: 10px 15px; border-radius: 5px; transition: background-color 0.3s, color 0.3s; }
+        #openModalBtn:hover, #openModalBtn2:hover { background-color: #fff; color: #333; }
+        .youtube-link { color: rgb(255, 0, 0); text-decoration: none; }
+        .youtube-link:hover { text-decoration: underline; }
+        .youtube-icon { width: 40px; height: auto; vertical-align: middle; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic">
+        <source src="thx for downloading.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="background-blur"></div>
+    <div class="container">
+        <header>
+            <h1>Aridity Team</h1>
+            <p>A team of 2-3 people developing fan-made mods. :)</p>
+        </header>
+        <main>
+            <section>
+                <h2>About The Team</h2>
+                <button id="openModalBtn">Learn More</button>
+                <div id="aboutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+                        <h2>About Aridity Team</h2>
+                        <p>The Aridity Team is a group of developers who mainly work with .NET (VB and C#) or C++. We also develop games based on the Source engine.</p>
+                        <p>If you're interested in joining us, you don't need to be a software developer/engineer. We welcome contributions in sound design, graphics, voice acting, and more!</p>
+                        <p><b>Team members:</b></p>
+                        <ul>
+                            <li>PracticeMedicine - former team lead, project lead, programmer, level designer, archiso config on batarongOS.</li>
+                            <li><strong>TwilightBob/Unnamed</strong> - Team Lead, Project Lead, Level Designer, Model Design
+                                <p>
+                                    <a href="https://youtube.com/@bvvth556gaming?si=fivKw9ZY-9vmH-h5" class="youtube-link" target="_blank" rel="noopener noreferrer">
+                                        <img src="ytico.png" alt="YouTube Channel" class="youtube-icon">
+                                        <span class="youtube-text">YouTube Channel</span>
+                                    </a>
+                                </p>
+                            </li>
+                            <li>bvvth556 - team lead, level designer, script manipulator.</li>
+                            <li>certified PC eater/rilabug - project lead for batarongOS, archiso config and plymouth theme on batarongOS.</li>
+                            <li>Timmy - archiso config on batarongOS.</li>
+                            <li>TheAR3Guy - music director.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Support Us</h2>
+                <button id="openModalBtn2">Donate</button>
+                <div id="aboutModal2" class="modal">
+                     <div class="modal-content">
+                        <span class="close" onclick="closeModal('aboutModal2')">&times;</span>
+                        <h2>Please Support us</h2>
+                        <p>If you are interested in donating, you can kindly donate to me (the maker of the website).</p>
+                        <p>QR Codes to Donate:</p>
+                        <ul>
+                            <p>Maker of the Website</p>
+                            <li><img src="meqrcode5usd.jpg" alt="$5"></li>
+                            <p>$5</p>
+                            <li><img src="meqrcode10usd.jpg" alt="$10"></li>
+                            <p>$10</p>
+                            <li><img src="meqrcode20usd..jpg" alt="$20"></li>
+                            <p>$20</p>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <hr style="margin-top: 40px; border-color: #555;">
+
+            <section>
+                <h2>Game Release Archive</h2>
+                <p>Browse through all official releases of our projects.</p>
+
+                <div class="game-archive">
+                    <h3>Beta Fortress Client</h3>
+                    
+                    <div class="release-version">
+                        <h4>Version 6 <span class="release-date">(Latest - September 15, 2025)</span></h4>
+                        <p>The most stable and feature-rich version yet! We're trying to make this a 100% accurate beta recreation.</p>
+                        <ul>
+                            <li>Added new map: ar_hydro</li>
+                            <li>Fixed major spy disguise bugs.</li>
+                            <li>Improved overall performance and stability.</li>
+                        </ul>
+                        
+                        <a href="https://github.com/AridityTeam/BetaFortressClient-Releases/releases/download/v6/beta-fortresss-client.v0.6.any.cpu.release.rar" target="_blank" onclick="playAudio()" class="download-link">Download v6</a>
+                    </div>
+
+                    <div class="release-version">
+                        <h4>Version 5.5 <span class="release-date">(July 20, 2025)</span></h4>
+                         <ul>
+                            <li>Introduced preliminary support for custom sprays.</li>
+                            <li>Fixed a server crash related to rocket jumps.</li>
+                        </ul>
+                        <a href="#" target="_blank" onclick="playAudio()" class="download-link">Download v5.5 (Link Missing)</a>
+                    </div>
+                    
+                    <div class="release-version">
+                        <h4>Version 5.0 <span class="release-date">(May 1, 2025)</span></h4>
+                         <ul>
+                            <li>Initial public release.</li>
+                            <li>Included core classes and weapons.</li>
+                        </ul>
+                        <a href="#" target="_blank" onclick="playAudio()" class="download-link">Download v5.0 (Link Missing)</a>
+                    </div>
+                </div>
+
+                <div class="game-archive">
+                    <h3>Half-Life 2 Deathmatch: Community Edition</h3>
+                    <p style="text-align:center; padding: 20px;">This project is currently in development. Check back soon for the first release! 🛠️</p>
+                    
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Aridity Team. All rights reserved. (Website by gabgamming920)</p>
+    </footer>
+
+    <script>
+        // Get the modals
+        var modal = document.getElementById('aboutModal');
+        var modal2 = document.getElementById('aboutModal2');
+
+        // Get the buttons that open the modals
+        var btn = document.getElementById("openModalBtn");
+        var btn2 = document.getElementById("openModalBtn2");
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        btn2.onclick = function() {
+            modal2.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+        }
+
+        // Play audio function
+        function playAudio() {
+            var audio = document.getElementById('backgroundMusic');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
